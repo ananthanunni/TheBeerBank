@@ -4,7 +4,7 @@ import { Beer } from '../../models/Beer';
 import { staggeredFadeAnimation } from 'src/app/common-library/animations/Animations';
 
 @Component({
-  selector: 'app-index',
+  selector: 'beer-store-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
   animations:[staggeredFadeAnimation]

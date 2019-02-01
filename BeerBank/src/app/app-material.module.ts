@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import {MatCardModule, MatIconModule, MatProgressBarModule, MatProgressSpinnerModule, MatRippleModule} from "@angular/material";
+import {MatCardModule, MatIconModule, MatProgressSpinnerModule, MatRippleModule, MatDialogModule} from "@angular/material";
 
-const components:any[] = [MatCardModule, MatIconModule,MatProgressSpinnerModule, MatRippleModule];
+const components:any[] = [MatCardModule, MatIconModule,MatProgressSpinnerModule, MatRippleModule, MatDialogModule];
 
 @NgModule({
   declarations: [],

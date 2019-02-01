@@ -6,6 +6,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 $accentColor: orange;
 $textColor:#000;
 $boxShadowColor:rgb(150, 150, 150);
+$beerDetailsHeaderUnderlineColor:purple;
+$modalForecolor:rgb(90, 90, 90);
 
 $headerBackgroundColor: $accentColor;
 $headerForegroundColor:#fff;
@@ -46,4 +48,18 @@ h1,h2,h3,h4,h5,h6{
 
 .normal-text-color{
     color:$textColor;
+}
+
+.beer-details-image{
+    width:100%;
+}
+
+.beer-details-title-underline{
+    margin:12px 0;
+    background:$beerDetailsHeaderUnderlineColor;
+    padding:3px;
+}
+
+.similar-beer-thumbnail {
+    height: 120px;
 }
