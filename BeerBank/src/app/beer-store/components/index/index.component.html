@@ -1,3 +1,8 @@
-<p>
-  index works!
-</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 mt-4" *ngFor="let item of beerCollection">
+        <beer-store-beer-card [beer]="item"></beer-store-beer-card>
+    </div>
+</div>
+<div class="text-center" *ngIf="isLoadingBeers">
+    <mat-spinner></mat-spinner>
+</div>

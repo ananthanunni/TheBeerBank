@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
-import {MatButtonModule} from "@angular/material";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {MatCardModule, MatIconModule, MatProgressBarModule, MatProgressSpinnerModule, MatRippleModule} from "@angular/material";
 
-const components:any[] = [MatButtonModule];
-
-components.splice(0, 0, BrowserAnimationsModule);
+const components:any[] = [MatCardModule, MatIconModule,MatProgressSpinnerModule, MatRippleModule];
 
 @NgModule({
   declarations: [],

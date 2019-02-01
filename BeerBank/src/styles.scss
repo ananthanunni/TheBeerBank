@@ -4,9 +4,16 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 $accentColor: orange;
+$textColor:#000;
+$boxShadowColor:rgb(150, 150, 150);
 
 $headerBackgroundColor: $accentColor;
 $headerForegroundColor:#fff;
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: bold;
+    color:$accentColor;
+}
 
 .header{
     background: $headerBackgroundColor;
@@ -22,4 +29,17 @@ $headerForegroundColor:#fff;
 .header a:hover{
     color:$headerForegroundColor;
     text-decoration: underline;
+}
+
+.beer-card-thumbnail {
+    height: 180px;
+    margin-top: -30px;
+}
+
+.accent-color{
+    color:$accentColor;
+}
+
+.normal-text-color{
+    color:$textColor;
 }

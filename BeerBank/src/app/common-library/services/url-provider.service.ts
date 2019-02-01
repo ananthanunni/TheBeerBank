@@ -6,6 +6,13 @@ import { Injectable } from '@angular/core';
 export class UrlProviderService {
   constructor() { }
 
+  private baseUrl="https://api.punkapi.com/v2/";
+
+  private getBeer=this.baseUrl+"beers";
+  public getBeerPage(pageNumber:number=1, pageSize:number=18){
+    return this.urlFormat(this.getBeer+"?page={0}&per_page={1}",[pageNumber.toString(),pageSize.toString()]);
+  }
+
   public urlFormat(template: string, params: string[] = null) {
     var url = template;
 

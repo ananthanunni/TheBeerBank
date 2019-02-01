@@ -1,0 +1,16 @@
+<mat-card class="box-shadow" [ngClass]="{'mat-elevation-z6':!isHovering, 'mat-elevation-z18':isHovering}"
+   (mouseenter)="isHovering=true" (mouseleave)="isHovering=false">
+  <mat-card-content class="text-center">
+    <div class="text-right">
+        <a (click)="toggleFavorite(model)" class="normal-text-color" href="javascript:void(0)">
+            <i class="material-icons accent-color" *ngIf="model.isFavorite">star</i>
+            <i class="material-icons" *ngIf="!model.isFavorite">star_border</i>
+        </a>
+    </div>
+    <img class="img-responsive beer-card-thumbnail" [src]="model.image_url" [alt]="model.name">
+    <h4>{{model.name}}</h4>
+    <p class="text-muted">
+      {{model.tagline}}
+    </p>
+  </mat-card-content>
+</mat-card>
