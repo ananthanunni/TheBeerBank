@@ -31,12 +31,14 @@
       </ul>
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-3 mb-3">
     <div class="col-sm-12">
       <h4>You might also like:</h4>
     </div>
     <div class="col-sm-4" *ngFor="let item of similarBeers">
-      <div class="card">
+      <div class="card" matRipple (click)="onSimilarBeerSelected(item)"
+      [ngClass]="{'mat-elevation-z6':!item.isHovering, 'mat-elevation-z18':item.isHovering}"
+      (mouseenter)="item.isHovering=true" (mouseleave)="item.isHovering=false">
           <div class="card-body">
               <div class="text-center">
                   <img [src]="item.image_url" [alt]="item.name" class="similar-beer-thumbnail" />

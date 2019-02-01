@@ -19,22 +19,27 @@ export class BeerCardComponent implements OnInit {
   @Output("onFavoriteChanged")
   onFavoriteChanged=new EventEmitter<Beer>();
 
+  @Output("onSimilarBeerSelected")
+  onSimilarBeerSelected=new EventEmitter<Beer>();
+
   ngOnInit() {
 
   }
 
-  toggleFavorite(){
+  toggleFavorite($event:MouseEvent){
+    $event.stopPropagation();
     this.onFavoriteChanged.emit(this.model);
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BeerDetailsComponent, {
-      width: '660px',
+      width: '720px',
       data: this.model
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((result:Beer) => {
+      if(!!result)
+        this.onSimilarBeerSelected.emit(result);
     });
   }
 }

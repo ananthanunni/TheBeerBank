@@ -2,16 +2,16 @@
   <div class="container-fluid text-center">
     <div class="row">
       <div class="col-sm-12 text-right text-uppercase top-navigation-bar">
-        <a [routerLink]="['/']">Home</a>
+        <a [routerLink]="['/']" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
         &nbsp;
-        <a [routerLink]="['favorites']">Favourite</a>
+        <a [routerLink]="['favorites']" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Favourite</a>
       </div>
     </div>
     <h1>The Beer Bank</h1>
     <div>Find your favorite beer here</div>
-    <div class="row mt-3">
+    <div class="row mt-3" *ngIf="canSearch">
       <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-        <input type="text" class="form-control" placeholder="Search for beer name" />
+        <input type="text" class="form-control" placeholder="Search for beer name" [(ngModel)]="searchTextValue" (keyup)="onTextChange()" />
       </div>
     </div>
   </div>

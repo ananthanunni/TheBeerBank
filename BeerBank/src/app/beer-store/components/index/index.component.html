@@ -1,8 +1,15 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoadingBeers"></mat-progress-bar>
 <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let item of beerCollection" [@staggeredFadeAnimation]="beerCollection.length">
-        <beer-store-beer-card [beer]="item" (onFavoriteChanged)="onFavoriteChanged(item)"></beer-store-beer-card>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let item of beerCollection"
+        [@staggeredFadeAnimation]="beerCollection.length">
+        <beer-store-beer-card #beerCard [beer]="item" 
+            (onFavoriteChanged)="onFavoriteChanged(item)"
+            (onSimilarBeerSelected)="onSimilarBeerSelected($event)"></beer-store-beer-card>
+    </div>
+    <div class="col-sm-12 mt-3" *ngIf="!beerCollection || beerCollection.length===0">
+        <div class="alert alert-warning text-center">
+            No items to display.
+        </div>
     </div>
 </div>
-<div class="text-center" *ngIf="isLoadingBeers">
-    <mat-spinner class="text-center"></mat-spinner>
-</div>
+<mat-progress-bar mode="indeterminate" *ngIf="isLoadingBeers && beerCollection && beerCollection.length>0"></mat-progress-bar>

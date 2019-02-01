@@ -5,12 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class UrlProviderService {
   constructor() { }
+  private defaultPageSize=18;
 
   private baseUrl="https://api.punkapi.com/v2/";
 
   private getBeer=this.baseUrl+"beers";
-  public getBeerPage(pageNumber:number=1, pageSize:number=18){
+  public getBeerPage(pageNumber:number=1, pageSize:number=this.defaultPageSize){
     return this.urlFormat(this.getBeer+"?page={0}&per_page={1}",[pageNumber.toString(),pageSize.toString()]);
+  }
+
+  public getBeerPageSearchText(pageNumber:number=1, pageSize:number=this.defaultPageSize, searchText:string){
+    return this.urlFormat(this.getBeer+"?page={0}&per_page={1}&beer_name={2}",[pageNumber.toString(),pageSize.toString(),encodeURIComponent(searchText)]);
   }
 
   public urlFormat(template: string, params: string[] = null) {

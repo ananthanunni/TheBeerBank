@@ -29,4 +29,7 @@ export class BeerDetailsComponent implements OnInit {
     });
   }
 
+  onSimilarBeerSelected(beer:Beer){
+    this.dialogRef.close(beer);
+  }
 }
