@@ -2,3 +2,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$accentColor: orange;
+
+$headerBackgroundColor: $accentColor;
+$headerForegroundColor:#fff;
+
+.header{
+    background: $headerBackgroundColor;
+    color: $headerForegroundColor;
+    padding-top:6px;
+    padding-bottom:30px;
+}
+
+.header a{
+    color:$headerForegroundColor;
+}
+
+.header a:hover{
+    color:$headerForegroundColor;
+    text-decoration: underline;
+}

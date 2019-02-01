@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ConfigProviderService } from './config-provider.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ import { ConfigProviderService } from './config-provider.service';
 export class WebRequestHandlerService {
 
   httpOptions: any;
-  constructor(private configProvider: ConfigProviderService, private http: HttpClient) {
+  constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders()
         .set("content-type", "application/json")
