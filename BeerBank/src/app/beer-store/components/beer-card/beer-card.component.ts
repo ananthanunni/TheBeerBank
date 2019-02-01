@@ -29,7 +29,7 @@ export class BeerCardComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BeerDetailsComponent, {
-      width: '600px',
+      width: '660px',
       data: this.model
     });
 

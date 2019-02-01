@@ -15,16 +15,26 @@ export class BeerProviderService {
   beerCollection: Beer[] = [];
   favoriteBeerCollection: Beer[] = [];
 
-  private loadedPageCount = 0;
-  private pageSize = 12;
-  getPage(pageNumber: number = 1) {
-    this.loadedPageCount = pageNumber;
-    return this.webRequest.get<Beer[]>(this.urlProvider.getBeerPage(pageNumber, this.pageSize));
-  }
+  private pageSize = 36;
+  getPage(pageNumber: number = 1, searchQuery:string="") {    
+    let subject=new Subject<Beer[]>();
 
-  addToCollection(beers: Beer[]) {
-    for (let item of beers)
-      this.beerCollection.push(item);
+    this.webRequest.get<Beer[]>(this.urlProvider.getBeerPage(pageNumber, this.pageSize))
+    .subscribe(newItems=>{
+      for(let item of newItems){
+        let currentFavItem=this.favoriteBeerCollection.find(t=>t.id===item.id);
+
+        if(!!currentFavItem)
+          item.isFavorite=currentFavItem.isFavorite;
+
+        this.beerCollection.push(item);
+      }
+
+      subject.next(this.beerCollection);
+      subject.complete();
+    });
+
+    return subject;
   }
 
   addFavorite(beer: Beer) {

@@ -20,11 +20,15 @@ h1,h2,h3,h4,h5,h6{
 .header{
     background: $headerBackgroundColor;
     color: $headerForegroundColor;
-    padding-top:6px;
+    padding-top:36px;
     padding-bottom:30px;
     
     h1{
         color:$headerForegroundColor;
+    }
+
+    *{
+        z-index: 1000;
     }
 }
 
@@ -62,4 +66,12 @@ h1,h2,h3,h4,h5,h6{
 
 .similar-beer-thumbnail {
     height: 120px;
+}
+
+.top-navigation-bar{
+    position: fixed;
+    background:$accentColor;
+    z-index: 100;
+    top: 0;
+    padding: 6px;
 }

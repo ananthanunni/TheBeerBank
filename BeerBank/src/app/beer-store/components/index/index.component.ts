@@ -14,7 +14,7 @@ export class IndexComponent implements OnInit {
   constructor(private beerProvider: BeerProviderService) { }
 
   isLoadingBeers = true;
-  beerCollection: Beer[] = [];
+  beerCollection: Beer[] = this.beerProvider.beerCollection;
   favorites: Beer[] = [];
 
   ngOnInit() {
@@ -29,12 +29,6 @@ export class IndexComponent implements OnInit {
 
     this.beerProvider.getPage()
       .subscribe(beers => {
-        for (let item of beers) {
-          this.beerCollection.push(item);
-        }
-
-        this.beerProvider.addToCollection(beers);
-
         this.isLoadingBeers = false;
       });
   }
