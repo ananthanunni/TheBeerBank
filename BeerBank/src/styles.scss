@@ -20,6 +20,10 @@ h1,h2,h3,h4,h5,h6{
     color: $headerForegroundColor;
     padding-top:6px;
     padding-bottom:30px;
+    
+    h1{
+        color:$headerForegroundColor;
+    }
 }
 
 .header a{

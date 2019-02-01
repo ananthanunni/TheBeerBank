@@ -15,13 +15,12 @@ export class BeerCardComponent implements OnInit {
   isHovering=false;
 
   @Output("onFavoriteChanged")
-  onFavoriteChanged=new EventEmitter<boolean>();
+  onFavoriteChanged=new EventEmitter<Beer>();
 
   ngOnInit() {
   }
 
-  toggleFavorite(item:Beer){
-    item.isFavorite=!item.isFavorite;;
-    this.onFavoriteChanged.emit(this.item.isFavorite);
+  toggleFavorite(){
+    this.onFavoriteChanged.emit(this.model);
   }
 }
