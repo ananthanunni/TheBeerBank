@@ -106,16 +106,20 @@ export class BeerProviderService {
 
     beer.isFavorite = false;
     collectionItem.isFavorite=false;
-  }
+  }  
 
-  getSimilarBeers(id: number, randomCount: number = 3) {
+  getSimilarBeers(id: number, source:Beer[], randomCount: number = 3) {
     let subject = new Subject<Beer[]>();
 
     let randomElements: Beer[] = [];
 
+    if(randomCount>source.length-1){
+      randomCount=source.length-1;
+    }
+
     setTimeout(() => {
       while (randomElements.length < randomCount) {
-        let newItem = this.beerCollection[Math.floor(Math.random() * this.beerCollection.length)];
+        let newItem = source[Math.floor(Math.random() * source.length)];
 
         let alreadyContains = (randomElements.findIndex(item => item.id === newItem.id) >= 0);
         if (newItem.id === id || alreadyContains)

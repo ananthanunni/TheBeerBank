@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Beer } from '../../models/Beer';
 import { BeerProviderService } from '../../services/beer-provider.service';
+import { AdvancedSearchProviderService } from '../../services/advanced-search-provider.service';
 
 @Component({
   selector: 'beer-store-beer-details',
@@ -11,8 +12,12 @@ import { BeerProviderService } from '../../services/beer-provider.service';
 export class BeerDetailsComponent implements OnInit {
   similarBeers: Beer[];
 
+  @Input("mode")
+  mode:"simple"|"advanced";
+
   constructor(
     private beerProvider:BeerProviderService,
+    private advancedSearchProvider:AdvancedSearchProviderService,
     public dialogRef: MatDialogRef<BeerDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public model: Beer) {
       
@@ -23,7 +28,7 @@ export class BeerDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.beerProvider.getSimilarBeers(this.model.id)
+    this.beerProvider.getSimilarBeers(this.model.id, this.mode==="simple" ? this.beerProvider.beerCollection:this.advancedSearchProvider.beerCollection)
     .subscribe(similar=>{
       this.similarBeers=similar;
     });

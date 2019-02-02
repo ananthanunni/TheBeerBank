@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing.module';
 import { CommonLibraryModule } from './common-library/common-library.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

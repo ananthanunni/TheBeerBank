@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let item of beerCollection" [@staggeredFadeAnimation]="beerCollection.length">
-        <beer-store-beer-card [beer]="item" (onFavoriteChanged)="onFavoriteChanged(item)"></beer-store-beer-card>
+        <beer-store-beer-card [beer]="item" (onFavoriteChanged)="onFavoriteChanged(item)" [hideSimilarBeers]="true"></beer-store-beer-card>
     </div>
     <div class="col-sm-12 mt-3" *ngIf="!beerCollection || beerCollection.length===0">
         <div class="alert alert-info text-center">
-            Your beer favourite list seems empty. <a [routerLink]="['/']">See All</a> 
+            Your beer favourite list seems empty. <a [routerLink]="['/']">Discover</a> 
         </div>
     </div>
 </div>

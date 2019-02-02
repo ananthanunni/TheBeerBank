@@ -22,9 +22,12 @@ export class IndexComponent implements OnInit, OnDestroy {
   beerCollection: Beer[] = this.beerProvider.beerCollection;
   favorites: Beer[] = [];
 
+  listenToScrollEnd=false;
+
   private isLoadingSubscription: Subscription = null;
   ngOnInit() {
     this.beerCollection = this.beerProvider.beerCollection;
+    this.listenToScrollEnd=false;
 
     this.isLoadingSubscription = this.beerProvider.isLoadingBeers
       .subscribe(isLoading => {
@@ -33,7 +36,7 @@ export class IndexComponent implements OnInit, OnDestroy {
         if (!this.isLoadingBeers) {
           this.beerCollection = this.beerProvider.beerCollection;
 
-          this.enableScrollLoad();
+          this.listenToScrollEnd=true;
         }
       });
 
@@ -45,20 +48,10 @@ export class IndexComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.isLoadingSubscription)
       this.isLoadingSubscription.unsubscribe();
-
-    window.onscroll = null;
   }
 
-  private isScrollLoadEnabled = false;
-  private enableScrollLoad() {
-    if (this.isScrollLoadEnabled) return;
-
-    window.onscroll = (event: any) => {
-      if(this.isLoadingBeers) return;
-
-      if ((window.scrollY + window.innerHeight) === document.body.scrollHeight)
-        this.beerProvider.getPage();
-    }
+  onScrollEnd(){
+    this.beerProvider.getPage();
   }
 
   onFavoriteChanged(item: Beer) {

@@ -12,6 +12,13 @@
     <div class="row mt-3" *ngIf="canSearch">
       <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
         <input type="text" class="form-control" placeholder="Search for beer name" [(ngModel)]="searchTextValue" (keyup)="onTextChange()" />
+        <div class="text-right">
+          <a [routerLink]="['advancedsearch']">
+            <small>
+              Advanced Search
+            </small>
+          </a>
+        </div>
       </div>
     </div>
   </div>

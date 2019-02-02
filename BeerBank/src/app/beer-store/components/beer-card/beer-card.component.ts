@@ -14,6 +14,9 @@ export class BeerCardComponent implements OnInit {
   @Input("beer")
   model:Beer;
 
+  @Input("hideSimilarBeers")
+  hideSimilarBeers:boolean;
+
   isHovering=false;
 
   @Output("onFavoriteChanged")
@@ -23,7 +26,8 @@ export class BeerCardComponent implements OnInit {
   onSimilarBeerSelected=new EventEmitter<Beer>();
 
   ngOnInit() {
-
+    if(this.hideSimilarBeers===null)
+      this.hideSimilarBeers=false;
   }
 
   toggleFavorite($event:MouseEvent){
@@ -38,6 +42,9 @@ export class BeerCardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result:Beer) => {
+      if(this.hideSimilarBeers)
+        return;
+
       if(!!result)
         this.onSimilarBeerSelected.emit(result);
     });
