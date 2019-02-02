@@ -28,6 +28,9 @@ export class BeerDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!this.mode)
+      this.mode="simple";
+
     this.beerProvider.getSimilarBeers(this.model.id, this.mode==="simple" ? this.beerProvider.beerCollection:this.advancedSearchProvider.beerCollection)
     .subscribe(similar=>{
       this.similarBeers=similar;

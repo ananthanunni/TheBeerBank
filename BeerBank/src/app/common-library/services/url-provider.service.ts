@@ -7,7 +7,7 @@ import { AdvancedSearchParams } from 'src/app/beer-store/models/AdvancedSearchPa
 })
 export class UrlProviderService {
   constructor() { }
-  private defaultPageSize = 12;
+  private defaultPageSize = 24;
 
   private baseUrl = "https://api.punkapi.com/v2/";
 

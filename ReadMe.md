@@ -3,3 +3,9 @@
 * TypeScript
 * Angular Routing
 * Angular Material
+
+GitHub
+https://github.com/ananthanunni/TheBeerBank
+
+Deployed Instance
+http://beerbank.azurewebsites.net/
